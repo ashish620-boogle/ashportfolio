@@ -25,10 +25,3 @@ I'm an AI enthusiast who loves to learn about new things. Connect with me on Lin
 ![Ashish's GitHub stats](https://github-readme-stats.vercel.app/api?username=ashish620-boogle&show_icons=true&theme=light-purple)
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=ashish620-boogle&langs_count=8&layout=compact)](https://github.com/anuraghazra/github-readme-stats)
-
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
