@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Futuristic Cyberpunk Design System - Dark theme with neon glows */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
+/* Futuristic Cyberpunk Design System - Dark theme with neon glows */
 @layer base {
   :root {
     /* Core dark background palette */

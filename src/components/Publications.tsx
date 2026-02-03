@@ -6,33 +6,40 @@ gsap.registerPlugin(ScrollTrigger);
 const publications = [{
   id: 1,
   title: 'GAttE: Geographic Attention model for Extraction of users\' current locations from social media texts',
+  publisher: 'Springer',
   status: 'In Review',
   type: 'Journal Paper',
-  description: 'A novel attention-based model for extracting geographic locations from social media content using NLP techniques.'
+  description: 'A novel attention-based model GAttE using multi-level embeddings and deconvolutions to extract user locations from social media text, outperforming BERT and others with higher accuracy and lower spatial error.'
 }, {
   id: 2,
   title: 'A combined supervised and unsupervised deep learning approach for Intrusion Detection in IoT Traffic in an Edge Computing Environment',
   publisher: 'Springer',
-  type: 'Conference Paper',
-  description: 'Hybrid deep learning approach combining supervised and unsupervised methods for detecting intrusions in IoT network traffic.'
+  link: 'https://link.springer.com/article/10.1007/s42979-025-04103-0',
+  type: 'Journal Paper',
+  description: 'A scalable, efficient IoT intrusion detection novel model for 5G networks achieves 91% accuracy with ~90% reduced space-time complexity using heterogeneous clustering on WUSTL-IIOT and NSL-KDD datasets.'
 }, {
   id: 3,
   title: 'Intrusion Detection and Prevention systems in Industrial IoT network',
   publisher: 'Springer',
-  type: 'Conference Paper',
-  description: 'Comprehensive analysis and implementation of intrusion detection and prevention systems for Industrial IoT networks.'
+  link: 'https://link.springer.com/article/10.1007/s12046-024-02567-z',
+  type: 'Journal Paper',
+  description: 'A novel transformer-boosting intrusion detection model handles highly imbalanced Industrial IoT traffic, reducing false negatives and accurately classifying botnet attacks, including similar DoS and DDoS traffic, on UNSW-IoT-Botnet data.'
 }, {
   id: 4,
   title: 'VectionSense: Multimodal Inertial-Physiological Cybersickness Detection in Consumer VR',
   status: 'In Review',
-  type: 'Journal Paper',
-  description: 'Novel multimodal approach using inertial and physiological signals for detecting cybersickness in virtual reality environments.'
+  type: 'Conference Paper',
+  description: 'A lightweight multimodal system detects cybersickness in real time by fusing VR headset SLAM motion data with smartwatch heart-rate signals. A compact Transformer achieves high accuracy and low latency, generalises across users, correlates with SSQ scores, and enables practical continuous in-headset monitoring.'
 }];
 const Publications = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
+    if (!sectionRef.current || !cardsRef.current) {
+      return;
+    }
+
     const ctx = gsap.context(() => {
       // Header animation
       gsap.from(headerRef.current, {
@@ -54,13 +61,16 @@ const Publications = () => {
         duration: 0.6,
         stagger: 0.15,
         ease: 'power3.out',
+        immediateRender: false,
         scrollTrigger: {
           trigger: cardsRef.current,
           start: 'top 85%',
-          toggleActions: 'play none none reverse'
+          toggleActions: 'play none none reverse',
+          invalidateOnRefresh: true
         }
       });
     });
+    ScrollTrigger.refresh();
     return () => ctx.revert();
   }, []);
   return <section id="publications" ref={sectionRef} className="section-container bg-gradient-to-b from-card/30 to-background relative overflow-hidden">
@@ -115,12 +125,23 @@ const Publications = () => {
                 {pub.description}
               </p>
 
-              {/* View link */}
+              {/* View link / status */}
               <div className="mt-4 pt-4 border-t border-border/50 opacity-100">
-                <span className="inline-flex items-center gap-2 text-sm text-primary hover:text-accent transition-colors cursor-pointer">
-                  View Publication
-                  <ArrowUpRight size={16} weight="light" className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                </span>
+                {pub.link ? (
+                  <a
+                    href={pub.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm text-primary hover:text-accent transition-colors"
+                  >
+                    View Publication
+                    <ArrowUpRight size={16} weight="light" className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  </a>
+                ) : (
+                  <span className="inline-flex items-center gap-2 text-sm text-accent">
+                    In Review
+                  </span>
+                )}
               </div>
             </div>)}
         </div>

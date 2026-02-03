@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { EnvelopeSimple, PaperPlaneTilt, GithubLogo, LinkedinLogo, Phone } from '@phosphor-icons/react';
 gsap.registerPlugin(ScrollTrigger);
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xkozlppk';
 const Contact = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
@@ -13,6 +14,7 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Header animation
@@ -65,27 +67,62 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError(null);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      if (!formRef.current) {
+        throw new Error('Form not ready. Please try again.');
+      }
 
-    // Animate button on success
-    gsap.to('.submit-btn', {
-      scale: 1.1,
-      duration: 0.2,
-      yoyo: true,
-      repeat: 1
-    });
-    setIsSubmitting(false);
-    setSubmitted(true);
-    setFormData({
-      name: '',
-      email: '',
-      message: ''
-    });
+      if (FORMSPREE_ENDPOINT.includes('REPLACE_WITH_FORM_ID')) {
+        throw new Error('Form endpoint not configured yet.');
+      }
 
-    // Reset submitted state after delay
-    setTimeout(() => setSubmitted(false), 3000);
+      const payload = new FormData(formRef.current);
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json'
+        },
+        body: payload
+      });
+
+      if (!response.ok) {
+        let message = 'Failed to send message. Please try again.';
+        try {
+          const data = await response.json();
+          if (data?.errors?.[0]?.message) {
+            message = data.errors[0].message;
+          }
+        } catch {
+          // Ignore JSON parse errors and use default message.
+        }
+        throw new Error(message);
+      }
+
+      // Animate button on success
+      gsap.to('.submit-btn', {
+        scale: 1.1,
+        duration: 0.2,
+        yoyo: true,
+        repeat: 1
+      });
+
+      setSubmitted(true);
+      setFormData({
+        name: '',
+        email: '',
+        message: ''
+      });
+
+      // Reset submitted state after delay
+      setTimeout(() => setSubmitted(false), 3000);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Failed to send message.';
+      setSubmitError(message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   return <section id="contact" ref={sectionRef} className="section-container bg-gradient-to-b from-card/30 to-background">
       {/* Background elements */}
@@ -185,6 +222,9 @@ const Contact = () => {
                   <PaperPlaneTilt size={20} weight="light" />
                 </>}
             </button>
+            {submitError && (
+              <p className="text-sm text-destructive">{submitError}</p>
+            )}
           </form>
         </div>
       </div>

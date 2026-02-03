@@ -2,34 +2,30 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import profileImage from '@/assets/profile.png';
-import { 
-  Code, 
-  Brain, 
-  Database, 
-  Cube,
-  Lightning,
-  ChartLine
-} from '@phosphor-icons/react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const skills = [
-  { name: 'C', icon: Code },
-  { name: 'C++', icon: Code },
-  { name: 'Python', icon: Code },
-  { name: 'PyTorch', icon: Lightning },
-  { name: 'TensorFlow', icon: Brain },
-  { name: 'NumPy', icon: ChartLine },
-  { name: 'Pandas', icon: Database },
-  { name: 'Scikit-learn', icon: Brain },
-  { name: 'Matplotlib', icon: ChartLine },
-  { name: 'Seaborn', icon: ChartLine },
-  { name: 'Skimlit', icon: Code },
-  { name: 'Flask', icon: Cube },
-  { name: 'FastAPI', icon: Lightning },
-  { name: 'MySQL', icon: Database },
-  { name: 'PostgreSQL', icon: Database },
-  { name: 'Unity', icon: Cube },
+  { name: 'C', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg' },
+  { name: 'C++', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg' },
+  { name: 'Python', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+  { name: 'PyTorch', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg' },
+  { name: 'TensorFlow', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg' },
+  { name: 'NumPy', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg' },
+  { name: 'Pandas', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg' },
+  { name: 'Scikit-learn', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg' },
+  { name: 'Matplotlib', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg' },
+  { 
+    name: 'Seaborn', 
+    logo: 'https://seaborn.pydata.org/_static/logo-mark-lightbg.svg',
+    fallback: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg'
+  },
+  { name: 'Skimlit', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/streamlit/streamlit-original.svg' },
+  { name: 'Flask', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg', invert: true },
+  { name: 'FastAPI', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg' },
+  { name: 'MySQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
+  { name: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
+  { name: 'Unity', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg', invert: true },
 ];
 
 const About = () => {
@@ -188,24 +184,37 @@ const About = () => {
           </h3>
           
           <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4">
-            {skills.map((skill, index) => {
-              const IconComponent = skill.icon;
-              return (
-                <div 
-                  key={skill.name}
-                  className="skill-item skill-icon flex flex-col items-center gap-3 group"
-                >
-                  <IconComponent 
-                    size={40} 
-                    weight="light"
-                    className="text-primary group-hover:text-accent transition-colors"
-                  />
-                  <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">
-                    {skill.name}
-                  </span>
-                </div>
-              );
-            })}
+            {skills.map((skill) => (
+              <div 
+                key={skill.name}
+                className="skill-item skill-icon flex flex-col items-center gap-3 group"
+              >
+                <img
+                  src={skill.logo}
+                  alt={`${skill.name} logo`}
+                  loading="lazy"
+                  className={`h-10 w-10 object-contain transition-transform duration-300 group-hover:scale-110 ${
+                    skill.invert ? 'invert' : ''
+                  }`}
+                  onError={(e) => {
+                    const img = e.currentTarget;
+                    if (!skill.fallback || img.dataset.fallbackApplied === 'true') {
+                      return;
+                    }
+                    img.dataset.fallbackApplied = 'true';
+                    img.src = skill.fallback;
+                    if (skill.fallbackInvert === false) {
+                      img.classList.remove('invert');
+                    } else if (skill.fallbackInvert === true) {
+                      img.classList.add('invert');
+                    }
+                  }}
+                />
+                <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">
+                  {skill.name}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
