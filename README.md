@@ -22,4 +22,4 @@ I'm an AI enthusiast who loves to learn about new things. Connect with me on Lin
 - XR interaction design
 - Software Design
 
-![Ashish's Portfolio](https://ashishml.netlify.app/)
+[Ashish's Portfolio](https://ashishml.netlify.app/)
