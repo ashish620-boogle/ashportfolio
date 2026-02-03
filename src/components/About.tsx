@@ -162,7 +162,7 @@ const About = () => {
             {/* Stats */}
             <div className="flex flex-wrap gap-6 pt-4">
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary">2+</div>
+                <div className="text-3xl font-bold text-primary">4</div>
                 <div className="text-sm text-muted-foreground">Publications</div>
               </div>
               <div className="text-center">
