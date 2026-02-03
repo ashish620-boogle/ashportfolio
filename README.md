@@ -22,6 +22,4 @@ I'm an AI enthusiast who loves to learn about new things. Connect with me on Lin
 - XR interaction design
 - Software Design
 
-![Ashish's GitHub stats](https://github-readme-stats.vercel.app/api?username=ashish620-boogle&show_icons=true&theme=light-purple)
-
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=ashish620-boogle&langs_count=8&layout=compact)](https://github.com/anuraghazra/github-readme-stats)
+![Ashish's Portfolio](https://ashishml.netlify.app/)
