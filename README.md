@@ -1,70 +1,31 @@
-# Welcome to your Lovable project
+# Welcome to my portfolio
 
-## Project info
+![muintro](https://user-images.githubusercontent.com/56781746/208604770-1dec3a3c-3fcb-45cb-a3eb-9df25dd03016.gif)
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+<!-- You can create your own header images using Canva, it has a lot of templates. If you do, use the following link https://www.canva.com/join/celeriac-tread-jellyfish -->
+I'm an AI enthusiast who loves to learn about new things. Connect with me on LinkedIn.
 
-## How can I edit this code?
+<img align='right' src='https://media.giphy.com/media/bcKmIWkUMCjVm/giphy.gif' width='200"'>
 
-There are several ways of editing your application.
+[![Linkedin Badge](https://img.shields.io/badge/-AshishKumar-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/ashish-kumar-13a605197/)](https://www.linkedin.com/in/ashish-kumar-13a605197/)
+[![Gmail Badge](https://img.shields.io/badge/-ashishboogle810@gmail.com-d14836?style=flat-square&logo=Gmail&logoColor=white&link=mailto:ashishboogle810@gmail.com)](mailto:ashishboogle810@gmail.com)
+## ⚡ Domains:
+- Machine Learning and Deep Learning model development
+- Digital Image Processing
+- Natural Language Processing
+- Artificial Intelligence
+- Competitive Coding
+- Research
+- Networking
+- GenAI
+- Problem Solving
+- XR interaction design
+- Software Design
 
-**Use Lovable**
+![Ashish's GitHub stats](https://github-readme-stats.vercel.app/api?username=ashish620-boogle&show_icons=true&theme=light-purple)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=ashish620-boogle&langs_count=8&layout=compact)](https://github.com/anuraghazra/github-readme-stats)
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
 
 Yes, you can!
 
