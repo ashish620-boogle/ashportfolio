@@ -41,33 +41,43 @@ const Publications = () => {
     }
 
     const ctx = gsap.context(() => {
-      // Header animation
-      gsap.from(headerRef.current, {
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse'
-        }
+      const mm = gsap.matchMedia();
+
+      mm.add('(prefers-reduced-motion: reduce), (max-width: 768px)', () => {
+        return () => {};
       });
 
-      // Cards stagger animation
-      gsap.from('.publication-card', {
-        y: 40,
-        opacity: 0,
-        scale: 0.95,
-        duration: 0.6,
-        stagger: 0.15,
-        ease: 'power3.out',
-        immediateRender: false,
-        scrollTrigger: {
-          trigger: cardsRef.current,
-          start: 'top 85%',
-          toggleActions: 'play none none reverse',
-          invalidateOnRefresh: true
-        }
+      mm.add('(prefers-reduced-motion: no-preference) and (min-width: 769px)', () => {
+        // Header animation
+        gsap.from(headerRef.current, {
+          y: 50,
+          opacity: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+          }
+        });
+
+        // Cards stagger animation
+        gsap.from('.publication-card', {
+          y: 40,
+          opacity: 0,
+          scale: 0.95,
+          duration: 0.6,
+          stagger: 0.15,
+          ease: 'power3.out',
+          immediateRender: false,
+          scrollTrigger: {
+            trigger: cardsRef.current,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse',
+            invalidateOnRefresh: true
+          }
+        });
+
+        return () => {};
       });
     });
     ScrollTrigger.refresh();

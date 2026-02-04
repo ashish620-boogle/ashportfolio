@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ArrowDown } from '@phosphor-icons/react';
 
@@ -11,78 +11,110 @@ const Hero = () => {
   const orb1Ref = useRef<HTMLDivElement>(null);
   const orb2Ref = useRef<HTMLDivElement>(null);
   const orb3Ref = useRef<HTMLDivElement>(null);
+  const [loadSpline, setLoadSpline] = useState(false);
 
   useEffect(() => {
-    const tl = gsap.timeline({ delay: 3.2 });
+    const mm = gsap.matchMedia();
 
-    // Headline animation
-    tl.from(headlineRef.current, {
-      y: 50,
-      opacity: 0,
-      filter: 'blur(10px)',
-      duration: 1,
-      ease: 'power3.out'
-    })
-    .from(subtitleRef.current, {
-      y: 30,
-      opacity: 0,
-      filter: 'blur(5px)',
-      duration: 0.8,
-      ease: 'power3.out'
-    }, '-=0.5')
-    .from(ctaRef.current, {
-      y: 20,
-      opacity: 0,
-      scale: 0.9,
-      duration: 0.6,
-      ease: 'back.out(1.7)'
-    }, '-=0.3')
-    .from(scrollIndicatorRef.current, {
-      opacity: 0,
-      y: -20,
-      duration: 0.6,
-      ease: 'power2.out'
-    }, '-=0.2');
-
-    // Floating orbs animation
-    gsap.to(orb1Ref.current, {
-      y: -30,
-      x: 10,
-      duration: 4,
-      repeat: -1,
-      yoyo: true,
-      ease: 'power1.inOut'
+    mm.add('(prefers-reduced-motion: reduce), (max-width: 768px)', () => {
+      return () => {};
     });
 
-    gsap.to(orb2Ref.current, {
-      y: 20,
-      x: -15,
-      duration: 5,
-      repeat: -1,
-      yoyo: true,
-      ease: 'power1.inOut',
-      delay: 1
+    mm.add('(prefers-reduced-motion: no-preference) and (min-width: 769px)', () => {
+      const tl = gsap.timeline({ delay: 3.2 });
+
+      // Headline animation
+      tl.from(headlineRef.current, {
+        y: 50,
+        opacity: 0,
+        filter: 'blur(10px)',
+        duration: 1,
+        ease: 'power3.out'
+      })
+      .from(subtitleRef.current, {
+        y: 30,
+        opacity: 0,
+        filter: 'blur(5px)',
+        duration: 0.8,
+        ease: 'power3.out'
+      }, '-=0.5')
+      .from(ctaRef.current, {
+        y: 20,
+        opacity: 0,
+        scale: 0.9,
+        duration: 0.6,
+        ease: 'back.out(1.7)'
+      }, '-=0.3')
+      .from(scrollIndicatorRef.current, {
+        opacity: 0,
+        y: -20,
+        duration: 0.6,
+        ease: 'power2.out'
+      }, '-=0.2');
+
+      // Floating orbs animation
+      gsap.to(orb1Ref.current, {
+        y: -30,
+        x: 10,
+        duration: 4,
+        repeat: -1,
+        yoyo: true,
+        ease: 'power1.inOut'
+      });
+
+      gsap.to(orb2Ref.current, {
+        y: 20,
+        x: -15,
+        duration: 5,
+        repeat: -1,
+        yoyo: true,
+        ease: 'power1.inOut',
+        delay: 1
+      });
+
+      gsap.to(orb3Ref.current, {
+        y: -25,
+        x: 20,
+        duration: 6,
+        repeat: -1,
+        yoyo: true,
+        ease: 'power1.inOut',
+        delay: 2
+      });
+
+      return () => {
+        tl.kill();
+      };
     });
 
-    gsap.to(orb3Ref.current, {
-      y: -25,
-      x: 20,
-      duration: 6,
-      repeat: -1,
-      yoyo: true,
-      ease: 'power1.inOut',
-      delay: 2
-    });
+    return () => mm.revert();
+  }, []);
+
+  useEffect(() => {
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    if (isMobile) {
+      setLoadSpline(false);
+      return;
+    }
+
+    const idle = window.requestIdleCallback
+      ? window.requestIdleCallback(() => setLoadSpline(true))
+      : window.setTimeout(() => setLoadSpline(true), 1200);
 
     return () => {
-      tl.kill();
+      if (typeof idle === 'number') {
+        window.clearTimeout(idle);
+      } else if (idle) {
+        window.cancelIdleCallback?.(idle);
+      }
     };
   }, []);
 
   const scrollToAbout = () => {
     const aboutSection = document.querySelector('#about');
     if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      aboutSection.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
     }
   };
 
@@ -94,14 +126,19 @@ const Hero = () => {
     >
       {/* Spline 3D Background */}
       <div className="absolute inset-0 z-0">
-        <iframe 
-          src='https://my.spline.design/liquidchrome-UV4WCsK781oEsfWlJ6UR1J6z/' 
-          frameBorder='0' 
-          width='100%' 
-          height='100%'
-          className="opacity-60"
-          title="3D Background"
-        />
+        {loadSpline ? (
+          <iframe 
+            src="https://my.spline.design/liquidchrome-UV4WCsK781oEsfWlJ6UR1J6z/" 
+            frameBorder="0" 
+            width="100%" 
+            height="100%"
+            loading="lazy"
+            className="opacity-60"
+            title="3D Background"
+          />
+        ) : (
+          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background/90" />
+        )}
         {/* Gradient overlay for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/80" />
       </div>
@@ -151,7 +188,8 @@ const Hero = () => {
             className="btn-neon text-lg"
             onClick={(e) => {
               e.preventDefault();
-              document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+              const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+              document.querySelector('#contact')?.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
             }}
           >
             Hire Me
@@ -161,7 +199,8 @@ const Hero = () => {
             className="px-8 py-4 border border-primary/50 rounded-lg text-foreground hover:bg-primary/10 hover:border-primary transition-all duration-300"
             onClick={(e) => {
               e.preventDefault();
-              document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
+              const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+              document.querySelector('#projects')?.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
             }}
           >
             View Projects

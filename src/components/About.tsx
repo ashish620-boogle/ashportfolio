@@ -36,63 +36,73 @@ const About = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Section fade in
-      gsap.from(sectionRef.current, {
-        opacity: 0,
-        filter: 'blur(10px)',
-        duration: 1,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse'
-        }
+      const mm = gsap.matchMedia();
+
+      mm.add('(prefers-reduced-motion: reduce), (max-width: 768px)', () => {
+        return () => {};
       });
 
-      // Image animation
-      gsap.from(imageRef.current, {
-        x: -100,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: imageRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse'
-        }
-      });
-
-      // Content animation
-      gsap.from(contentRef.current, {
-        x: 100,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: contentRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse'
-        }
-      });
-
-      // Skills stagger animation
-      const skillItems = document.querySelectorAll('.skill-item');
-      if (skillItems.length > 0) {
-        gsap.fromTo(skillItems, 
-          { y: 30, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.6,
-            stagger: 0.05,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: skillsRef.current,
-              start: 'top 90%',
-              toggleActions: 'play none none none'
-            }
+      mm.add('(prefers-reduced-motion: no-preference) and (min-width: 769px)', () => {
+        // Section fade in
+        gsap.from(sectionRef.current, {
+          opacity: 0,
+          filter: 'blur(10px)',
+          duration: 1,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
           }
-        );
-      }
+        });
+
+        // Image animation
+        gsap.from(imageRef.current, {
+          x: -100,
+          opacity: 0,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: imageRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+          }
+        });
+
+        // Content animation
+        gsap.from(contentRef.current, {
+          x: 100,
+          opacity: 0,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: contentRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+          }
+        });
+
+        // Skills stagger animation
+        const skillItems = document.querySelectorAll('.skill-item');
+        if (skillItems.length > 0) {
+          gsap.fromTo(skillItems, 
+            { y: 30, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.6,
+              stagger: 0.05,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: skillsRef.current,
+                start: 'top 90%',
+                toggleActions: 'play none none none'
+              }
+            }
+          );
+        }
+
+        return () => {};
+      });
     });
 
     return () => ctx.revert();

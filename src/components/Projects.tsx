@@ -74,31 +74,41 @@ const Projects = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Header animation
-      gsap.from(headerRef.current, {
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse'
-        }
+      const mm = gsap.matchMedia();
+
+      mm.add('(prefers-reduced-motion: reduce), (max-width: 768px)', () => {
+        return () => {};
       });
 
-      // Cards stagger animation
-      gsap.from('.project-card-wrapper', {
-        y: 60,
-        opacity: 0,
-        scale: 0.95,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: sliderRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse'
-        }
+      mm.add('(prefers-reduced-motion: no-preference) and (min-width: 769px)', () => {
+        // Header animation
+        gsap.from(headerRef.current, {
+          y: 50,
+          opacity: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+          }
+        });
+
+        // Cards stagger animation
+        gsap.from('.project-card-wrapper', {
+          y: 60,
+          opacity: 0,
+          scale: 0.95,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: sliderRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+          }
+        });
+
+        return () => {};
       });
     });
 
@@ -214,6 +224,9 @@ const Projects = () => {
                   <img 
                     src={project.image} 
                     alt={project.title}
+                    loading="lazy"
+                    decoding="async"
+                    fetchPriority="low"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />

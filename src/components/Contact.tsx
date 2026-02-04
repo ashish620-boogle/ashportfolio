@@ -17,43 +17,53 @@ const Contact = () => {
   const [submitError, setSubmitError] = useState<string | null>(null);
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Header animation
-      gsap.from('.contact-header', {
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse'
-        }
+      const mm = gsap.matchMedia();
+
+      mm.add('(prefers-reduced-motion: reduce), (max-width: 768px)', () => {
+        return () => {};
       });
 
-      // Form elements animation
-      gsap.from('.form-element', {
-        x: -30,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.15,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: formRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse'
-        }
-      });
+      mm.add('(prefers-reduced-motion: no-preference) and (min-width: 769px)', () => {
+        // Header animation
+        gsap.from('.contact-header', {
+          y: 50,
+          opacity: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+          }
+        });
 
-      // Social icons animation
-      gsap.from('.social-icon', {
-        y: 20,
-        opacity: 0,
-        duration: 0.5,
-        stagger: 0.1,
-        scrollTrigger: {
-          trigger: '.social-icons',
-          start: 'top 90%',
-          toggleActions: 'play none none reverse'
-        }
+        // Form elements animation
+        gsap.from('.form-element', {
+          x: -30,
+          opacity: 0,
+          duration: 0.6,
+          stagger: 0.15,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: formRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+          }
+        });
+
+        // Social icons animation
+        gsap.from('.social-icon', {
+          y: 20,
+          opacity: 0,
+          duration: 0.5,
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: '.social-icons',
+            start: 'top 90%',
+            toggleActions: 'play none none reverse'
+          }
+        });
+
+        return () => {};
       });
     });
     return () => ctx.revert();

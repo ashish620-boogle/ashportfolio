@@ -50,30 +50,40 @@ const Experience = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Header animation
-      gsap.from(headerRef.current, {
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse'
-        }
+      const mm = gsap.matchMedia();
+
+      mm.add('(prefers-reduced-motion: reduce), (max-width: 768px)', () => {
+        return () => {};
       });
 
-      // Timeline items stagger animation
-      gsap.from('.experience-card', {
-        x: -60,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: timelineRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse'
-        }
+      mm.add('(prefers-reduced-motion: no-preference) and (min-width: 769px)', () => {
+        // Header animation
+        gsap.from(headerRef.current, {
+          y: 50,
+          opacity: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+          }
+        });
+
+        // Timeline items stagger animation
+        gsap.from('.experience-card', {
+          x: -60,
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: timelineRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+          }
+        });
+
+        return () => {};
       });
     });
 

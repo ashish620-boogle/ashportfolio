@@ -324,3 +324,17 @@
     filter: blur(64px);
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .float,
+  .float-delayed,
+  .animate-bounce,
+  .glow-orb {
+    animation: none !important;
+    transform: none !important;
+  }
+}
