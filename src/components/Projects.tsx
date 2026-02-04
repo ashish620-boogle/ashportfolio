@@ -105,10 +105,38 @@ const Projects = () => {
     return () => ctx.revert();
   }, []);
 
+  useEffect(() => {
+    const slider = sliderRef.current;
+    if (!slider) {
+      return;
+    }
+
+    const handleScroll = () => {
+      const card = slider.children[0] as HTMLElement | undefined;
+      if (!card) {
+        return;
+      }
+
+      const styles = window.getComputedStyle(slider);
+      const gapValue = parseFloat(styles.columnGap || styles.gap || '0');
+      const cardWidth = card.clientWidth || 1;
+      const index = Math.round(slider.scrollLeft / (cardWidth + gapValue));
+      setCurrentIndex(Math.max(0, Math.min(projects.length - 1, index)));
+    };
+
+    slider.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      slider.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   const scrollToIndex = (index: number) => {
     if (sliderRef.current) {
       const cardWidth = sliderRef.current.children[0]?.clientWidth || 400;
-      const gap = 24;
+      const styles = window.getComputedStyle(sliderRef.current);
+      const gap = parseFloat(styles.columnGap || styles.gap || '0') || 24;
       sliderRef.current.scrollTo({
         left: index * (cardWidth + gap),
         behavior: 'smooth'
