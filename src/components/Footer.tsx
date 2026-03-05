@@ -6,7 +6,8 @@ import {
   LinkedinLogo, 
   EnvelopeSimple,
   Heart,
-  GraduationCap
+  GraduationCap,
+  Code
 } from '@phosphor-icons/react';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -113,6 +114,14 @@ const Footer = () => {
               className="p-3 glass-card rounded-lg hover:bg-primary/10 hover:border-primary/50 transition-all group"
             >
               <LinkedinLogo size={20} weight="light" className="text-muted-foreground group-hover:text-primary transition-colors" />
+            </a>
+            <a 
+              href="https://www.hackerrank.com/profile/ashishboogle810"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 glass-card rounded-lg hover:bg-primary/10 hover:border-primary/50 transition-all group"
+            >
+              <Code size={20} weight="light" className="text-muted-foreground group-hover:text-primary transition-colors" />
             </a>
             <a 
               href="https://scholar.google.com/citations?user=-gl_BFsAAAAJ&hl=en"

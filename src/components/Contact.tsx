@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { EnvelopeSimple, PaperPlaneTilt, GithubLogo, LinkedinLogo, Phone } from '@phosphor-icons/react';
+import { EnvelopeSimple, PaperPlaneTilt, GithubLogo, LinkedinLogo, Phone, Code } from '@phosphor-icons/react';
 gsap.registerPlugin(ScrollTrigger);
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xkozlppk';
 const Contact = () => {
@@ -198,6 +198,9 @@ const Contact = () => {
                 </a>
                 <a href="https://www.linkedin.com/in/ashish-kumar-13a605197/" target="_blank" rel="noopener noreferrer" className="social-icon p-4 glass-card rounded-xl hover:bg-primary/10 hover:border-primary/50 transition-all group">
                   <LinkedinLogo size={28} weight="light" className="text-muted-foreground group-hover:text-primary transition-colors" />
+                </a>
+                <a href="https://www.hackerrank.com/profile/ashishboogle810" target="_blank" rel="noopener noreferrer" className="social-icon p-4 glass-card rounded-xl hover:bg-primary/10 hover:border-primary/50 transition-all group">
+                  <Code size={28} weight="light" className="text-muted-foreground group-hover:text-primary transition-colors" />
                 </a>
               </div>
             </div>
