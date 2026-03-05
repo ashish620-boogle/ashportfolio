@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { EnvelopeSimple, PaperPlaneTilt, GithubLogo, LinkedinLogo, Phone } from '@phosphor-icons/react';
-import HackerRankIcon from '@/components/HackerRankIcon';
 gsap.registerPlugin(ScrollTrigger);
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xkozlppk';
 const Contact = () => {
@@ -192,16 +191,22 @@ const Contact = () => {
 
             {/* Social links */}
             <div className="social-icons form-element">
-              
               <div className="flex gap-4">
-                <a href="https://github.com/ashish620-boogle" target="_blank" rel="noopener noreferrer" className="social-icon p-4 glass-card rounded-xl hover:bg-primary/10 hover:border-primary/50 transition-all group">
+                <a 
+                  href="https://github.com/ashish620-boogle" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="social-icon p-4 glass-card rounded-xl hover:bg-primary/10 hover:border-primary/50 transition-all group"
+                >
                   <GithubLogo size={28} weight="light" className="text-muted-foreground group-hover:text-primary transition-colors" />
                 </a>
-                <a href="https://www.linkedin.com/in/ashish-kumar-13a605197/" target="_blank" rel="noopener noreferrer" className="social-icon p-4 glass-card rounded-xl hover:bg-primary/10 hover:border-primary/50 transition-all group">
+                <a 
+                  href="https://www.linkedin.com/in/ashish-kumar-13a605197/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="social-icon p-4 glass-card rounded-xl hover:bg-primary/10 hover:border-primary/50 transition-all group"
+                >
                   <LinkedinLogo size={28} weight="light" className="text-muted-foreground group-hover:text-primary transition-colors" />
-                </a>
-                <a href="https://www.hackerrank.com/profile/ashishboogle810" target="_blank" rel="noopener noreferrer" className="social-icon p-4 glass-card rounded-xl hover:bg-primary/10 hover:border-primary/50 transition-all group">
-                  <HackerRankIcon size={28} className="text-muted-foreground group-hover:text-primary transition-colors" />
                 </a>
               </div>
             </div>
