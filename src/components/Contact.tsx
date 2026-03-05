@@ -191,21 +191,12 @@ const Contact = () => {
 
             {/* Social links */}
             <div className="social-icons form-element">
+
               <div className="flex gap-4">
-                <a 
-                  href="https://github.com/ashish620-boogle" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="social-icon p-4 glass-card rounded-xl hover:bg-primary/10 hover:border-primary/50 transition-all group"
-                >
+                <a href="https://github.com/ashish620-boogle" target="_blank" rel="noopener noreferrer" className="social-icon p-4 glass-card rounded-xl hover:bg-primary/10 hover:border-primary/50 transition-all group">
                   <GithubLogo size={28} weight="light" className="text-muted-foreground group-hover:text-primary transition-colors" />
                 </a>
-                <a 
-                  href="https://www.linkedin.com/in/ashish-kumar-13a605197/" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="social-icon p-4 glass-card rounded-xl hover:bg-primary/10 hover:border-primary/50 transition-all group"
-                >
+                <a href="https://www.linkedin.com/in/ashish-kumar-13a605197/" target="_blank" rel="noopener noreferrer" className="social-icon p-4 glass-card rounded-xl hover:bg-primary/10 hover:border-primary/50 transition-all group">
                   <LinkedinLogo size={28} weight="light" className="text-muted-foreground group-hover:text-primary transition-colors" />
                 </a>
               </div>
