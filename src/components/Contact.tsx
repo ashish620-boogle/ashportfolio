@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { EnvelopeSimple, PaperPlaneTilt, GithubLogo, LinkedinLogo, Phone } from '@phosphor-icons/react';
+import { EnvelopeSimple, PaperPlaneTilt, Phone } from '@phosphor-icons/react';
 gsap.registerPlugin(ScrollTrigger);
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xkozlppk';
 const Contact = () => {
@@ -46,19 +46,6 @@ const Contact = () => {
           scrollTrigger: {
             trigger: formRef.current,
             start: 'top 80%',
-            toggleActions: 'play none none reverse'
-          }
-        });
-
-        // Social icons animation
-        gsap.from('.social-icon', {
-          y: 20,
-          opacity: 0,
-          duration: 0.5,
-          stagger: 0.1,
-          scrollTrigger: {
-            trigger: '.social-icons',
-            start: 'top 90%',
             toggleActions: 'play none none reverse'
           }
         });
@@ -189,18 +176,7 @@ const Contact = () => {
               </a>
             </div>
 
-            {/* Social links */}
-            <div className="social-icons form-element">
-
-              <div className="flex gap-4">
-                <a href="https://github.com/ashish620-boogle" target="_blank" rel="noopener noreferrer" className="social-icon p-4 glass-card rounded-xl hover:bg-primary/10 hover:border-primary/50 transition-all group">
-                  <GithubLogo size={28} weight="light" className="text-muted-foreground group-hover:text-primary transition-colors" />
-                </a>
-                <a href="https://www.linkedin.com/in/ashish-kumar-13a605197/" target="_blank" rel="noopener noreferrer" className="social-icon p-4 glass-card rounded-xl hover:bg-primary/10 hover:border-primary/50 transition-all group">
-                  <LinkedinLogo size={28} weight="light" className="text-muted-foreground group-hover:text-primary transition-colors" />
-                </a>
-              </div>
-            </div>
+            {/* Social links removed */}
           </div>
 
           {/* Contact Form */}
