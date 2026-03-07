@@ -13,6 +13,8 @@ const skills = [
   { name: 'TensorFlow', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg' },
   { name: 'Codex', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/openai.svg', invert: true },
   { name: 'LLMs', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/huggingface.svg', invert: true },
+  { name: 'LangChain', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/langchain.svg', invert: true },
+  { name: 'LangGraph', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/langgraph.svg', invert: true },
   { name: 'Claude AI', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/claude.svg', invert: true },
   { name: 'NumPy', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg' },
   { name: 'Pandas', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg' },
@@ -29,6 +31,7 @@ const skills = [
   { name: 'MySQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
   { name: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
   { name: 'Docker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
+  { name: 'Render', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/render.svg', invert: true },
   { name: 'Unity', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg', invert: true },
 ];
 
