@@ -10,6 +10,7 @@ import project3 from '@/assets/project-3.png';
 import project4 from '@/assets/project-4.png';
 import project5 from '@/assets/project-5.png';
 import project6 from '@/assets/project-6.png';
+import project7 from '@/assets/project-7.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -63,6 +64,15 @@ const projects = [
     image: project6,
     tags: ['TensorFlow', 'NLP', 'Python', 'ML'],
     github: 'https://github.com/ashish620-boogle/Fake_News_Identification'
+  },
+  {
+    id: 7,
+    title: 'LoopForge',
+    description: 'Multi-tool LangGraph chatbot looping between LLM and external tools to find answers.',
+    image: project7,
+    tags: ['Python', 'LLM', 'LangGraph', 'Flask', 'Render'],
+    github: 'https://github.com/ashish620-boogle/Agentic-AI-Chat-bot',
+    demo: 'https://loopforge.onrender.com/'
   }
 ];
 
