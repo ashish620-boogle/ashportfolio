@@ -178,7 +178,7 @@ const Hero = () => {
           className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
         >
           Building intelligent systems with NLP, RAG pipelines, and cutting-edge machine learning. 
-          Currently pursuing M.Tech in AR/VR at IIT Jodhpur.
+          Currently pursuing M.Tech at IIT Jodhpur.
         </p>
 
         {/* CTA Buttons */}
