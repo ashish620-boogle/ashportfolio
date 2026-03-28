@@ -7,7 +7,7 @@ const publications = [{
   id: 1,
   title: 'GAttE: Geographic Attention model for Extraction of users\' current locations from social media texts',
   publisher: 'Springer',
-  status: 'In Review',
+  status: 'Accepted',
   type: 'Journal Paper',
   description: 'A novel attention-based model GAttE using multi-level embeddings and deconvolutions to extract user locations from social media text, outperforming BERT and others with higher accuracy and lower spatial error.'
 }, {
@@ -27,7 +27,7 @@ const publications = [{
 }, {
   id: 4,
   title: 'VectionSense: Multimodal Inertial-Physiological Cybersickness Detection in Consumer VR',
-  status: 'In Review',
+  status: 'Accepted',
   type: 'Conference Paper',
   description: 'A lightweight multimodal system detects cybersickness in real time by fusing VR headset SLAM motion data with smartwatch heart-rate signals. A compact Transformer achieves high accuracy and low latency, generalises across users, correlates with SSQ scores, and enables practical continuous in-headset monitoring.'
 }];
