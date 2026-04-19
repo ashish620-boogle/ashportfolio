@@ -7,13 +7,14 @@ const publications = [{
   id: 1,
   title: 'GAttE: Geographic Attention model for Extraction of users\' current locations from social media texts',
   publisher: 'Springer',
+  link: 'https://link.springer.com/article/10.1007/s12046-024-02568-y',
   type: 'Journal Paper',
   description: 'A novel attention-based model GAttE using multi-level embeddings and deconvolutions to extract user locations from social media text, outperforming BERT and others with higher accuracy and lower spatial error.'
 }, {
   id: 2,
   title: 'A combined supervised and unsupervised deep learning approach for Intrusion Detection in IoT Traffic in an Edge Computing Environment',
   publisher: 'Springer',
-  link: 'https://link.springer.com/article/10.1007/s42979-025-04103-0',
+  link: 'https://link.springer.com/article/10.1007/s10115-026-02755-9',
   type: 'Journal Paper',
   description: 'A scalable, efficient IoT intrusion detection novel model for 5G networks achieves 91% accuracy with ~90% reduced space-time complexity using heterogeneous clustering on WUSTL-IIOT and NSL-KDD datasets.'
 }, {
