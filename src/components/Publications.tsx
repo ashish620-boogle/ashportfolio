@@ -7,7 +7,7 @@ const publications = [{
   id: 1,
   title: 'GAttE: Geographic Attention model for Extraction of users\' current locations from social media texts',
   publisher: 'Springer',
-  link: 'https://link.springer.com/article/10.1007/s10115-026-02755-9'
+  link: 'https://link.springer.com/article/10.1007/s10115-026-02755-9',
   type: 'Journal Paper',
   description: 'A novel attention-based model GAttE using multi-level embeddings and deconvolutions to extract user locations from social media text, outperforming BERT and others with higher accuracy and lower spatial error.'
 }, {
