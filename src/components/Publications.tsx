@@ -149,7 +149,7 @@ const Publications = () => {
                   </a>
                 ) : (
                   <span className="inline-flex items-center gap-2 text-sm text-accent">
-                    In Review
+                    Accepted
                   </span>
                 )}
               </div>
